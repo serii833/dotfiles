@@ -74,6 +74,7 @@ export PATH=/c/tools/oracle_client:$PATH
 export PATH="/c/Program Files/dotnet":$PATH
 export PATH="/c/Program Files/nodejs":$PATH
 export PATH=$PATH:$HOME/.local/share/gem/ruby/3.3.0/bin
+export PATH=$PATH:$HOME
 
 export PATH=/c/tools/jdk/bin:$PATH
 #export PATH=/c/tools/jruby/bin:$PATH
@@ -87,6 +88,7 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 export LANG=en_US.utf-8
 
 export EDITOR=nvim
+export TMPDIR="/tmp"
 
 source $HOME/fzf-key-bindings.zsh
 
