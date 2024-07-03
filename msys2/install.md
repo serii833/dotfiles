@@ -15,3 +15,28 @@ pacman -S libiconv-devel
 
 gem install nokogiri 
 gem install rubyXL
+
+
+## nvim alacrity remove extra new lines when pasting
+.zshrc
+```bash
+export TMPDIR="/tmp"
+```
+
+create file pbpaste and make it executable
+```bash
+#!/bin/bash
+#powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//
+powershell.exe Get-Clipboard | sed 's/\r$//'
+exit 0
+```
+
+
+```lua
+vim.keymap.set("n", "<leader>p", ":r!pbpaste<CR>'.kJ")
+vim.keymap.set("i", "<leader>p", ":r!pbpaste<CR>'.kJ")
+vim.cmd("set shell=bash")
+vim.cmd("set shellcmdflag=-c")
+vim.cmd("set noshelltemp")
+vim.cmd("let  $TMP='/tmp'")
+```
