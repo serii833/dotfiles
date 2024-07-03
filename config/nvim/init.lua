@@ -42,10 +42,16 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>")
 
 
+-- remove extra new lines when pasing
+vim.keymap.set("n", "<leader>p", ":r!pbpaste<CR>'.kJ")
+vim.keymap.set("i", "<leader>p", ":r!pbpaste<CR>'.kJ")
+vim.cmd("set shell=bash")
+vim.cmd("set shellcmdflag=-c")
+vim.cmd("set noshelltemp")
 
 
 plugins = {
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+        { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
 }
 
 require("lazy").setup(plugins, opts)
