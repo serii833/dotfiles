@@ -1,3 +1,4 @@
+```bash
 pacman -S git ruby fzf nvim 
 pacman -S --needed base-devel msys2-devel 
 pacman -S ucrt64/mingw-w64-ucrt-x86_64-tk 
@@ -15,6 +16,9 @@ pacman -S libiconv-devel
 
 gem install nokogiri 
 gem install rubyXL
+gem install terminal-table
+```
+
 
 
 ## nvim alacrity remove extra new lines when pasting
