@@ -33,6 +33,12 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# complete hard drives in msys2
+drives=$(mount | sed -rn 's#^[A-Z]: on /([a-z]).*#\1#p' | tr '\n' ' ')
+zstyle ':completion:*' fake-files /: "/:$drives"
+unset drives
+
+
 # End of lines added by compinstall
 
 typeset -A ZSH_HIGHLIGHT_STYLES
