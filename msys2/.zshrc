@@ -72,13 +72,18 @@ source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias ll="ls -al --color"
-alias gitlog="git log --oneline --graph --all --decorate | head -n20"
+alias gitlog='git log --oneline --graph --all --decorate --pretty=format:"%h%x09%an%x09%ai   %s" -n20'
+
+
+alias lg1="git log -n20 --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ai)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias lg2="git log -n20 --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
 
 # export PATH=/c/tools/fzf:$PATH
 export PATH=/c/tools/msys64/ucrt64/bin:$PATH
 export PATH=/c/tools/oracle_client:$PATH
 export PATH="/c/Program Files/dotnet":$PATH
 export PATH="/c/Program Files/nodejs":$PATH
+export PATH="/d/tools/flyway":$PATH
 export PATH=$PATH:$HOME/.local/share/gem/ruby/3.3.0/bin
 export PATH=$PATH:$HOME
 
@@ -97,6 +102,7 @@ export EDITOR=nvim
 export TMPDIR="/tmp"
 
 source $HOME/fzf-key-bindings.zsh
+source $HOME/fzf-completion.zsh
 
 
 function setTitle() {
