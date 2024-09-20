@@ -40,6 +40,8 @@ Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 
+Plug 'preservim/nerdtree'
+
 set easymotion
 nmap s <Plug>(easymotion-s)
 
@@ -52,6 +54,16 @@ nmap s <Plug>(easymotion-s)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
+
+sethandler <c-h> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-l> a:vim
+nnoremap <c-h> <c-W>h
+nnoremap <c-j> <c-W>j
+nnoremap <c-k> <c-W>k
+nnoremap <c-l> <c-W>l
+nnoremap <c-w>n :action EditSourceInNewWindow<CR>
 
 nmap <leader>? :action GotoAction<CR>
 
@@ -66,7 +78,6 @@ nmap <leader>n :action GotoNextError<CR>
 map gh <Action>(ShowErrorDescription)
 
 
-nmap <leader>ri :action Inline<CR>
 nmap <leader>rr :action RenameElement<CR>
 nmap <leader>rev :action IntroduceVariable<CR>
 vmap <leader>rev :action IntroduceVariable<CR>
@@ -76,25 +87,31 @@ nmap <leader>rm :action Move<CR>
 nmap <leader>ro :action OptimizeImports<CR>
 nmap <leader>rG :action Generate<CR>
 
-nmap <leader>f  :action ReformatCode<CR>
-
+vmap <leader>f  :action ReformatCode<CR>
+nnoremap <C-v> p
+inoremap <C-v> <esc>pa
+nnoremap <leader>e :NERDTree<CR>
 
 nmap <C-p> <Action>(SearchEverywhere)
 
 
-map <leader>rd <Action>(Debug)
-map <leader>bb <Action>(ToggleLineBreakpoint)
+nmap <leader>rd <Action>(Debug)
+nmap <leader>rs <Action>(Stop)
+nmap <leader>rr <Action>(mainRunToolbarRunProcess)
+nmap <leader>bb <Action>(ToggleLineBreakpoint)
 
 
 " https://github.com/JetBrains/ideavim/discussions/375
 " echo &ide
 if &ide =~? "rider"
-    map <leader>tr <Action>(RiderUnitTestRunContextAction)
-    map <leader>td <Action>(RiderUnitTestDebugContextAction)
-    map <leader>ta <Action>(RiderUnitTestRunSolutionAction)
-    map <leader>ba <Action>(BuildWholeSolutionAction)
+    nmap <leader>tr <Action>(RiderUnitTestRunContextAction)
+    nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
+    nmap <leader>ta <Action>(RiderUnitTestRunSolutionAction)
+    nmap <leader>ba <Action>(BuildWholeSolutionAction)
 endif
 
 if &ide =~? "idea"
-    map <leader>ba "CompileDirty"
+    map <leader>ba <Action>(CompileDirty)
+    map <leader>tr <Action>(RunClass)
+    map <leader>td <Action>(DebugClass)
 endif
