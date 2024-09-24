@@ -87,7 +87,8 @@ nmap <leader>rm :action Move<CR>
 nmap <leader>ro :action OptimizeImports<CR>
 nmap <leader>rG :action Generate<CR>
 
-vmap <leader>f  :action ReformatCode<CR>
+vnoremap <leader>f  :action ReformatCode<CR>
+nnoremap <leader>f  :action ReformatCode<CR>
 nnoremap <C-v> p
 inoremap <C-v> <esc>pa
 nnoremap <leader>e :NERDTree<CR>
