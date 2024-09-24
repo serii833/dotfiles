@@ -112,7 +112,7 @@ if &ide =~? "rider"
 endif
 
 if &ide =~? "idea"
-    map <leader>ba <Action>(CompileDirty)
-    map <leader>tr <Action>(RunClass)
-    map <leader>td <Action>(DebugClass)
+    nmap <leader>ba <Action>(CompileDirty) " Build All
+    nmap <leader>tr <Action>(RunClass) " This Run (run code/test under cursor)
+    nmap <leader>td <Action>(DebugClass) " This Debug (debug code/test under cursor)
 endif
