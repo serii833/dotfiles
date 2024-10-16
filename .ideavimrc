@@ -8,6 +8,10 @@ let mapleader = " "
 set ignorecase
 set wrapscan                      " searches wrap around the end of the file
 set gdefault                      " substitute all occurrences in line per default
+set relativenumber
+set number
+
+
 
 vnoremap < <gv
 vnoremap > >gv
