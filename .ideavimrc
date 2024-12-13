@@ -11,8 +11,6 @@ set gdefault                      " substitute all occurrences in line per defau
 set relativenumber
 set number
 
-
-
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
@@ -82,7 +80,7 @@ nmap <leader>n :action GotoNextError<CR>
 map gh <Action>(ShowErrorDescription)
 
 
-nmap <leader>rr :action RenameElement<CR>
+" nmap <leader>rr :action RenameElement<CR>
 nmap <leader>rev :action IntroduceVariable<CR>
 vmap <leader>rev :action IntroduceVariable<CR>
 nmap <leader>rem :action ExtractMethod<CR>
@@ -91,24 +89,24 @@ nmap <leader>rm :action Move<CR>
 nmap <leader>ro :action OptimizeImports<CR>
 nmap <leader>rG :action Generate<CR>
 
-vnoremap <leader>f  :action ReformatCode<CR>
-nnoremap <leader>f  :action ReformatCode<CR>
-nnoremap <C-v> p
-inoremap <C-v> <esc>pa
-nnoremap <leader>e :NERDTree<CR>
+vmap <leader>f  :action ReformatCode<CR>
+nmap <leader>f  :action ReformatCode<CR>
+nmap <C-v> p
+imap <C-v> <esc>pa
+nmap <leader>e :NERDTree<CR>
 
 nmap <C-p> <Action>(SearchEverywhere)
 
 
 nmap <leader>rd <Action>(Debug)
 nmap <leader>rs <Action>(Stop)
-nmap <leader>rr <Action>(mainRunToolbarRunProcess)
 nmap <leader>bb <Action>(ToggleLineBreakpoint)
 
 
 " https://github.com/JetBrains/ideavim/discussions/375
 " echo &ide
 if &ide =~? "rider"
+    nmap <leader>rr <Action>(mainRunToolbarRunProcess)
     nmap <leader>tr <Action>(RiderUnitTestRunContextAction)
     nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
     nmap <leader>ta <Action>(RiderUnitTestRunSolutionAction)
@@ -116,6 +114,7 @@ if &ide =~? "rider"
 endif
 
 if &ide =~? "idea"
+    " nmap <leader>rr <Action>(Run)
     nmap <leader>ba <Action>(CompileDirty) " Build All
     nmap <leader>tr <Action>(RunClass) " This Run (run code/test under cursor)
     nmap <leader>td <Action>(DebugClass) " This Debug (debug code/test under cursor)
