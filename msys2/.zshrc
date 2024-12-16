@@ -108,3 +108,8 @@ source $HOME/fzf-completion.zsh
 function setTitle() {
   echo -ne "\e]0;$1\a"
 }
+
+
+
+#  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+#  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-zsh-history-substring-search
