@@ -5,26 +5,34 @@
 
 let mapleader = " "
 
+Plug 'machakann/vim-highlightedyank' " Highlight copied text
+Plug 'tpope/vim-commentary' " Commentary plugin
+Plug 'preservim/nerdtree'
+
+
 set ignorecase
 set wrapscan                      " searches wrap around the end of the file
 set gdefault                      " substitute all occurrences in line per default
 set relativenumber
 set number
 
-vnoremap < <gv
-vnoremap > >gv
-vnoremap = =gv
-
 
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 
+set easymotion
+nmap s <Plug>(easymotion-s)
+
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
 
 " don't overwrite register when pasting over selection
 vnoremap p pgvy
 
+nnoremap <C-v> p
+inoremap <C-v> <esc>pa
 
-"" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=8
@@ -35,27 +43,6 @@ set incsearch
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
-" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
-
-" Highlight copied text
-Plug 'machakann/vim-highlightedyank'
-" Commentary plugin
-Plug 'tpope/vim-commentary'
-
-Plug 'preservim/nerdtree'
-
-set easymotion
-nmap s <Plug>(easymotion-s)
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
 
 sethandler <c-h> a:vim
 sethandler <c-j> a:vim
@@ -65,35 +52,32 @@ nnoremap <c-h> <c-W>h
 nnoremap <c-j> <c-W>j
 nnoremap <c-k> <c-W>k
 nnoremap <c-l> <c-W>l
-nnoremap <c-w>n :action EditSourceInNewWindow<CR>
+" nnoremap <c-w>n :action EditSourceInNewWindow<CR>
 
 nmap <leader>? :action GotoAction<CR>
 
-nmap gr :action ShowUsages<CR>
-nmap gi :action GotoImplementation<CR>
-nmap gs :action GotoSuperMethod<CR>
+nnoremap gr :action ShowUsages<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
 
-
-" nmap <C-p> :action ParameterInfo<CR>
-" imap <C-p> <C-o>:action ParameterInfo<CR>
-nmap <leader>n :action GotoNextError<CR>
-map gh <Action>(ShowErrorDescription)
+nnoremap <leader>n :action GotoNextError<CR>
+nmap gh <Action>(ShowErrorDescription)
 
 
 " nmap <leader>rr :action RenameElement<CR>
-nmap <leader>rev :action IntroduceVariable<CR>
-vmap <leader>rev :action IntroduceVariable<CR>
-nmap <leader>rem :action ExtractMethod<CR>
-vmap <leader>rem :action ExtractMethod<CR>
-nmap <leader>rm :action Move<CR>
-nmap <leader>ro :action OptimizeImports<CR>
-nmap <leader>rG :action Generate<CR>
+nnoremap <leader>rev :action IntroduceVariable<CR>
+vnoremap <leader>rev :action IntroduceVariable<CR>
+nnoremap <leader>rem :action ExtractMethod<CR>
+vnoremap <leader>rem :action ExtractMethod<CR>
+nnoremap <leader>rm :action Move<CR>
+nnoremap <leader>ro :action OptimizeImports<CR>
+nnoremap <leader>rG :action Generate<CR>
 
-vmap <leader>f  :action ReformatCode<CR>
-nmap <leader>f  :action ReformatCode<CR>
-nmap <C-v> p
-imap <C-v> <esc>pa
-nmap <leader>e :NERDTree<CR>
+vnoremap <leader>f  :action ReformatCode<CR>
+nnoremap <leader>f  :action ReformatCode<CR>
+
+nnoremap <leader>e :NERDTree<CR>
+
 
 nmap <C-p> <Action>(SearchEverywhere)
 
@@ -114,7 +98,7 @@ if &ide =~? "rider"
 endif
 
 if &ide =~? "idea"
-    " nmap <leader>rr <Action>(Run)
+    nmap <leader>rr <Action>(Run)
     nmap <leader>ba <Action>(CompileDirty) " Build All
     nmap <leader>tr <Action>(RunClass) " This Run (run code/test under cursor)
     nmap <leader>td <Action>(DebugClass) " This Debug (debug code/test under cursor)
