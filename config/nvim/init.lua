@@ -17,9 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -44,6 +44,41 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
+
+
+
+
+
+
+local function add_ruby_deps_command(client, bufnr)
+    vim.api.nvim_buf_create_user_command(bufnr, "ShowRubyDeps", function(opts)
+            local params = vim.lsp.util.make_text_document_params()
+            local showAll = opts.args == "all"
+
+            client.request("rubyLsp/workspace/dependencies", params, function(error, result)
+                if error then
+                    print("Error showing deps: " .. error)
+                    return
+                end
+
+                local qf_list = {}
+                for _, item in ipairs(result) do
+                    if showAll or item.dependency then
+                        table.insert(qf_list, {
+                            text = string.format("%s (%s) - %s", item.name, item.version, item.dependency),
+                            filename = item.path
+                        })
+                    end
+                end
+
+                vim.fn.setqflist(qf_list)
+                vim.cmd('copen')
+            end, bufnr)
+        end,
+        { nargs = "?", complete = function() return { "all" } end })
+end
+
+
 
 
 
@@ -78,7 +113,7 @@ plugins = {
                     disable = function(lang, buf)
                         local max_filesize = 100 * 1024 -- 100KB
                         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                        if ok and stats.size > max_filesize then
+                        if ok and stats and stats.size > max_filesize then
                             return true
                         end
                     end
@@ -145,6 +180,17 @@ plugins = {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
             require("lspconfig").lua_ls.setup { capabilities = capabilities }
             require("lspconfig").vtsls.setup { capabilities = capabilities }
+            require("lspconfig").svelte.setup { capabilities = capabilities }
+            require("lspconfig").ruby_lsp.setup {
+                capabilities = capabilities,
+                on_attach = function(client, buffer)
+                    add_ruby_deps_command(client, buffer)
+                end,
+            }
+            require("lspconfig").intelephense.setup({
+                capabilities = capabilities,
+                filetypes = { "php" }
+            })
         end
     },
     {
@@ -161,6 +207,29 @@ plugins = {
                 automatic_installation = false
             }
         end,
+    },
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup()
+            local api = require("Comment.api")
+            local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+            vim.keymap.set("n", "<C-_>", api.toggle.linewise.current)
+            vim.keymap.set("x", "<C-_>", function() 
+                vim.api.nvim_feedkeys(esc, "nx", false)
+                api.toggle.linewise(vim.fn.visualmode())
+            end)
+        end
+    },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "nvim-telescope/telescope.nvim",
+            -- "ibhagwan/fzf-lua"
+        },
+        config = true
     }
 }
 
@@ -216,4 +285,3 @@ vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format() end)
 vim.keymap.set("v", "<space>f", format_selection)
 
 vim.keymap.set("n", "<space>n", vim.diagnostic.goto_next)
-
