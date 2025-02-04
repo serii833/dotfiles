@@ -20,8 +20,6 @@ set number
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 
-set easymotion
-nmap s <Plug>(easymotion-s)
 
 vnoremap < <gv
 vnoremap > >gv
@@ -43,6 +41,8 @@ set incsearch
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+set easymotion
+nmap s <Plug>(easymotion-s)
 
 sethandler <c-h> a:vim
 sethandler <c-j> a:vim
@@ -99,7 +99,10 @@ endif
 
 if &ide =~? "idea"
     nmap <leader>rr <Action>(Run)
-    nmap <leader>ba <Action>(CompileDirty) " Build All
-    nmap <leader>tr <Action>(RunClass) " This Run (run code/test under cursor)
-    nmap <leader>td <Action>(DebugClass) " This Debug (debug code/test under cursor)
+    " Build All
+    nmap <leader>ba <Action>(CompileDirty)
+    " This Run (run code/test under cursor)
+    map <leader>tr <Action>(RunClass) 
+     " This Debug (debug code/test under cursor)
+    nmap <leader>td <Action>(DebugClass)
 endif
