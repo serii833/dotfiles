@@ -1,5 +1,9 @@
 ```bash
-pacman -S git ruby fzf nvim 
+pacman -S git ruby
+
+pacman -S mingw-w64-ucrt-x86_64-fzf
+pacman -S mingw-w64-ucrt-x86_64-neovim
+
 pacman -S --needed base-devel msys2-devel 
 pacman -S ucrt64/mingw-w64-ucrt-x86_64-tk 
 pacman -S ucrt64/mingw-w64-ucrt-x86_64-neovim
