@@ -82,6 +82,7 @@ nnoremap <leader>e :NERDTree<CR>
 nmap <C-p> <Action>(SearchEverywhere)
 
 
+nmap <leader>rr <Action>(Run)
 nmap <leader>rd <Action>(Debug)
 nmap <leader>rs <Action>(Stop)
 nmap <leader>bb <Action>(ToggleLineBreakpoint)
@@ -90,7 +91,6 @@ nmap <leader>bb <Action>(ToggleLineBreakpoint)
 " https://github.com/JetBrains/ideavim/discussions/375
 " echo &ide
 if &ide =~? "rider"
-    nmap <leader>rr <Action>(mainRunToolbarRunProcess)
     nmap <leader>tr <Action>(RiderUnitTestRunContextAction)
     nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
     nmap <leader>ta <Action>(RiderUnitTestRunSolutionAction)
@@ -98,7 +98,6 @@ if &ide =~? "rider"
 endif
 
 if &ide =~? "idea"
-    nmap <leader>rr <Action>(Run)
     " Build All
     nmap <leader>ba <Action>(CompileDirty)
     " This Run (run code/test under cursor)
