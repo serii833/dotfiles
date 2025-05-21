@@ -1,0 +1,11 @@
+alefragnani.bookmarks
+beardedbear.beardedtheme
+eamodio.gitlens
+golang.go
+igorsbitnev.error-gutters
+jacobdufault.fuzzy-search
+jakearl.search-editor-apply-changes
+jtjoo.classic-asp-html
+kitplz.vim-nightfly-theme
+vscodevim.vim
+xyz.plsql-language
