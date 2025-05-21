@@ -1,0 +1,149 @@
+{
+    "editor.fontFamily": "FiraCode Nerd Font Mono",
+    "editor.fontSize": 12,
+    "files.encoding": "windows1251",
+    "workbench.colorTheme": "Bearded Theme Aquarelle Lilac",
+
+    "git.path": "c:/tools/msys64/usr/bin/git.exe",
+
+    // mods: Bearded Theme Aquarelle Lilac
+    "workbench.colorCustomizations": {
+        "editor.background": "#1b1a24",
+        "editorGutter.background": "#1b1a24",
+        "editorLineNumber.foreground": "#808080", // Color for inactive line numbers
+        "editorLineNumber.activeForeground": "#c7c4a1", // Color for the active line number
+        "statusBar.foreground": "#d6d4b6",
+        "tab.inactiveForeground": "#8b8b8b"
+    },
+
+    "editor.renderLineHighlight": "all",
+    "editor.lineNumbers": "relative",
+
+    "editor.tokenColorCustomizations": {
+        "comments": "#9eab98",
+        "textMateRules": [
+            {
+                "scope": "punctuation.separator",
+                "settings": {
+                    "foreground": "#c9c9d1",
+                }
+            },
+            {
+                "scope": "punctuation.accessor",
+                "settings": {
+                    "foreground": "#c9c9d1",
+                }
+            },
+            {
+                "scope": "punctuation.terminator",
+                "settings": {
+                    "foreground": "#c9c9d1",
+                }
+            },
+            {
+                "scope": "keyword.operator",
+                "settings": {
+                    "foreground": "#c9c9d1",
+                }
+            },
+            {
+                "scope": "punctuation",
+                "settings": {
+                    "foreground": "#c9c9d1"
+                }
+            }
+            
+        ]
+    },
+    "vim.easymotion": false,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<leader>", "o"],
+            "commands": ["symbols-outline.focus"]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": ["K"],
+            "commands": ["editor.action.showHover"],
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["p",],
+            "after": [ "p", "g", "v", "y"]
+        },
+        {
+            "before": ["<leader>", "f"],
+            "commands": ["editor.action.formatSelection"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-p>": false
+    },
+    // To improve performance"
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true
+    }
+}
