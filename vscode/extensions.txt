@@ -31,3 +31,6 @@ jakearl.search-editor-apply-changes
 jtjoo.classic-asp-html
 kitplz.vim-nightfly-theme
 vscodevim.vim
+
+
+sadesyllas.vscode-workspace-switcher
