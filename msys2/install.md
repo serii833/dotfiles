@@ -11,6 +11,8 @@ pacman -S ucrt64/mingw-w64-ucrt-x86_64-fzf
 pacman -S mingw-w64-ucrt-x86_64-gitui
 pacman -S ucrt64/mingw-w64-ucrt-x86_64-jq
 
+pacman -S mingw-w64-ucrt-x86_64-toolchain
+
 gem install ruby-oci8 
 gem install ruby-plsql
 
