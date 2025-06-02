@@ -110,6 +110,11 @@ function setTitle() {
 }
 
 
+## info 
 
 #  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 #  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-history-substring-search
+
+
+# Set up fzf key bindings and fuzzy completion
+# source <(fzf --zsh)
