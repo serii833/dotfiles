@@ -18,41 +18,19 @@
 
     "editor.renderLineHighlight": "all",
     "editor.lineNumbers": "relative",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+
+    // "vim.relativeNumber": true, 
+    // "vim.hybridLineNumbers": true,
 
     "editor.tokenColorCustomizations": {
         "comments": "#9eab98",
         "textMateRules": [
-            {
-                "scope": "punctuation.separator",
-                "settings": {
-                    "foreground": "#c9c9d1",
-                }
-            },
-            {
-                "scope": "punctuation.accessor",
-                "settings": {
-                    "foreground": "#c9c9d1",
-                }
-            },
-            {
-                "scope": "punctuation.terminator",
-                "settings": {
-                    "foreground": "#c9c9d1",
-                }
-            },
-            {
-                "scope": "keyword.operator",
-                "settings": {
-                    "foreground": "#c9c9d1",
-                }
-            },
-            {
-                "scope": "punctuation",
-                "settings": {
-                    "foreground": "#c9c9d1"
-                }
-            }
-            
+            { "scope": "punctuation.separator",        "settings": { "foreground": "#c9c9d1" } },
+            { "scope": "punctuation.accessor",         "settings": { "foreground": "#c9c9d1" } },
+            { "scope": "punctuation.terminator",       "settings": { "foreground": "#c9c9d1" } },
+            { "scope": "keyword.operator",             "settings": { "foreground": "#c9c9d1" } },
+            { "scope": "punctuation",                  "settings": { "foreground": "#c9c9d1" } }
         ]
     },
     "vim.easymotion": false,
@@ -62,75 +40,24 @@
     "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
         {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
+            "before": [ "j", "j" ], "after": [ "<Esc>" ]
         }
     ],
     "vim.normalModeKeyBindings": [
-        {
-            "before": [
-                "<leader>",
-                "m"
-            ],
-            "commands": [
-                "bookmarks.toggle"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "b"
-            ],
-            "commands": [
-                "bookmarks.list"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "n"
-            ],
-            "commands": [
-                "editor.action.marker.nextInFiles"
-            ]
-        }
+        { "before": ["<leader>", "m" ], "commands": [ "bookmarks.toggle" ] },
+        { "before": ["<leader>", "b" ], "commands": [ "bookmarks.list" ] },
+        { "before": ["<leader>", "n" ], "commands": [ "editor.action.marker.nextInFiles" ] }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>", "d"],
-            "after": ["d", "d"]
-        },
-        {
-            "before": ["<leader>", "o"],
-            "commands": ["symbols-outline.focus"]
-        },
-        {
-            "before": [
-                "<C-n>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
-        },
-        {
-            "before": ["K"],
-            "commands": ["editor.action.showHover"],
-        }
+        { "before": ["<C-n>"], "commands": ["workbench.action.files.newUntitledFile"]},
+        { "before": ["<leader>", "d"], "after": ["d", "d"] },
+        { "before": ["<leader>", "o"], "commands": ["symbols-outline.focus"] },
+        { "before": ["<C-n>"], "commands": [":nohl"] },
+        { "before": ["K"], "commands": ["editor.action.showHover"] }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["p",],
-            "after": [ "p", "g", "v", "y"]
-        },
-        {
-            "before": ["<leader>", "f"],
-            "commands": ["editor.action.formatSelection"]
-        }
+        { "before": ["p",], "after": [ "p", "g", "v", "y"] },
+        { "before": ["<leader>", "f"], "commands": ["editor.action.formatSelection"]}
     ],
     "vim.leader": "<space>",
     "vim.handleKeys": {
@@ -145,5 +72,27 @@
     "files.watcherExclude": {
         "**/.bloop": true,
         "**/.metals": true
-    }
+    },
+
+    // "terminal.integrated.defaultProfile.windows": "MSYS2",
+    // "terminal.integrated.profiles.windows": {
+    //     "MSYS2": {
+    //     "path": "C:\\tools\\msys64\\usr\\bin\\zsh.exe",
+    //     "args": ["--login"]
+    //     }
+    // },
+
+    // "terminal.integrated.defaultProfile.windows": "PowerShell",
+    
+    // "ruby.linting.rubocop": false,
+    // "ruby.languageServer": "custom",
+    // "ruby.customLanguageServer.command": "ruby-lsp",
+    // "ruby.customLanguageServer.arguments": []
+
+    // "rubyLsp.rubyExecutablePath": "c:\\tools\\msys64\\ucrt64\\bin\\ruby.exe",
+    // "rubyLsp.rubyVersionManager": {
+    //     "identifier": "custom"
+    // },
+    // "rubyLsp.customRubyCommand": "PATH=c:\\tools\\msys64\\ucrt64\\bin;%PATH%"
+   
 }
