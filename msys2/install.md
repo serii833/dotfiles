@@ -27,21 +27,9 @@ gem install rubyXL
 gem install terminal-table
 ```
 
-
-
-## nvim alacrity remove extra new lines when pasting
-.zshrc
-```bash
-export TMPDIR="/tmp"
-```
-
-create file pbpaste and make it executable
-```bash
-#!/bin/bash
-#powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//
-powershell.exe Get-Clipboard | sed 's/\r$//'
-exit 0
-```
+## clipboard
+win32yank
+https://github.com/equalsraf/win32yank
 
 
 ```lua
@@ -82,3 +70,4 @@ BoldCyan         = 198, 197, 254
 White            = 255, 255, 255
 BoldWhite        = 238, 238, 238
 ```
+
